@@ -1,0 +1,12 @@
+[Unit]
+Description=EPIAI Classifer
+After=network.target
+
+[Service]
+User=siphs
+WorkingDirectory=/home/epiai/epiai_cls_nodocker/src/
+ExecStart=/usr/bin/python3 app.py 
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
