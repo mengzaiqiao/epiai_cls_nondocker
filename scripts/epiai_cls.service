@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=siphs
 WorkingDirectory=/home/epiai/epiai_cls_nodocker/src/
-ExecStart=/usr/bin/python3 app.py 
+ExecStart=/usr/bin/gunicorn -b localhost:5000 -w 4 app:app 
 Restart=always
 
 [Install]
