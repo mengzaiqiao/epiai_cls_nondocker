@@ -1,0 +1,3 @@
+data='{"docs":["Today I woke up with migraine and I took an aspirine.", "Niger states have reported confirmed human cases of avian influenza H5N1, also called bird flu."]}'
+url=http://172.25.17.6:5000/cls_json
+curl --header "Content-Type: application/json" --request POST  --data  $data $url

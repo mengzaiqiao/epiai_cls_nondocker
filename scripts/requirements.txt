@@ -1,0 +1,15 @@
+# Torch, CPU only, for Python 3.6/3.7 and for Windows/Linux (both 64 bit). We have not tested support for MacOS but it
+# should be easy to add with 'sys_platform == 'darwin''.
+https://download.pytorch.org/whl/cpu/torch-1.7.1%2Bcpu-cp36-cp36m-linux_x86_64.whl; sys_platform == 'linux' and python_version == '3.6'
+# End torch
+
+flair==0.7
+flask==1.1.1
+googledrivedownloader==0.4
+gunicorn==20.0.4
+numpy==1.19.5
+segtok==1.5.10
+scikit-learn==0.21.3
+transformers==3.5.1
+tqdm==4.56.0
+pandas
