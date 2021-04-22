@@ -82,7 +82,7 @@ def convert_examples_to_features(df_examples, max_seq_length, tokenizer, column=
     return features
 
 
-def get_predict(df_examples, model, tokenizer, column="docs"):
+def get_predict(df_examples, model, tokenizer, column="docs", batch_size=8):
     eval_features = convert_examples_to_features(df_examples, 512, tokenizer, column)
     unpadded_input_ids = [f.input_ids for f in eval_features]
     unpadded_input_mask = [f.input_mask for f in eval_features]
@@ -94,7 +94,7 @@ def get_predict(df_examples, model, tokenizer, column="docs"):
 
     eval_data = TensorDataset(padded_input_ids, padded_input_mask, padded_segment_ids)
     eval_sampler = SequentialSampler(eval_data)
-    eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=8)
+    eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=batch_size)
 
     model.eval()
 
@@ -144,12 +144,12 @@ class DocCls:
         df.to_csv(output_csv)
         print(f"The result file is saved to: {output_csv}")
 
-    def predict_text(self, text):
+    def predict_text(self, text, batch_size=8):
         if not isinstance(text, list):
             text = [text]
         df = pd.DataFrame({"docs": text})
         predictions, relevancies = get_predict(
-            df, self.model, self.tokenizer, column="docs"
+            df, self.model, self.tokenizer, column="docs",batch_size
         )
         return predictions, relevancies
 

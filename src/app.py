@@ -27,8 +27,12 @@ def cls_json():
     print(request.is_json)
     content = request.get_json()
     text_list = content["docs"]
+    if "batch_size" in content:
+        batch_size = int(content["batch_size"])
+    else:
+        batch_size = 8
     now = time.time()
-    labels, scores = classifier.predict_text(text_list)
+    labels, scores = classifier.predict_text(text_list, batch_size)
     runtime = time.time() - now
     return jsonify(
         label=labels, scores=scores, runtime=f"{runtime} s", docs_num=len(text_list),
