@@ -1,12 +1,11 @@
 [Unit]
 Description=EPIAI Classifer
-After=network.target
-
-[Service]
-User=siphs
-WorkingDirectory=/home/epiai/epiai_cls_nodocker/src/
-ExecStart=/usr/bin/gunicorn -b localhost:5000 -w 4 app:app 
-Restart=always
-
 [Install]
 WantedBy=multi-user.target
+[Service]
+User=epiai
+PermissionsStartOnly=true
+ExecStart=/home/epiai/epiai_cls_nondocker/src/app.py
+TimeoutSec=600
+Restart=on-failure
+RuntimeDirectoryMode=755

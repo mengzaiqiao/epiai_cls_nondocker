@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 import torch
@@ -6,10 +8,16 @@ from torch.utils.data import DataLoader, SequentialSampler, TensorDataset
 from tqdm import tqdm
 from transformers import AutoTokenizer
 
-DEFAULT_INPUT_CSV = "./examples/default_example.csv"
-DEFAULT_OUTPUT_CSV = "./examples/default_result.csv"
-DEFAULT_MODEL_PATH = "./models/model_20210315_150752/model.bin"
-DEFAULT_TOKENIZER_PATH = "./models/tokenizer/"
+CURRENT_PATH = os.path.abspath(
+    os.path.dirname(os.path.abspath(__file__)) + os.path.sep + "."
+)
+
+DEFAULT_INPUT_CSV = os.path.join(CURRENT_PATH, "./examples/default_example.csv")
+DEFAULT_OUTPUT_CSV = os.path.join(CURRENT_PATH, "./examples/default_result.csv")
+DEFAULT_MODEL_PATH = os.path.join(
+    CURRENT_PATH, "./models/model_20210315_150752/model.bin"
+)
+DEFAULT_TOKENIZER_PATH = os.path.join(CURRENT_PATH, "./models/tokenizer/")
 DEFAULT_DOC_COL = "promed_news_text"
 
 import os
