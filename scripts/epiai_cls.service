@@ -5,7 +5,7 @@ WantedBy=multi-user.target
 [Service]
 User=epiai
 PermissionsStartOnly=true
-ExecStart=/home/epiai/epiai_cls_nondocker/src/app.py
+ExecStart=/usr/bin/python3 /home/epiai/epiai_cls_nondocker/src/app.py
 TimeoutSec=600
 Restart=on-failure
-RuntimeDirectoryMode=755
+RuntimeDirectoryMode=755sudo 
