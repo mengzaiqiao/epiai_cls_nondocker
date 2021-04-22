@@ -1,7 +1,13 @@
 #!/usr/bin/python3
+import os
+
 from flask import Flask, jsonify, request
 
 from doc_cls import DocCls
+
+CURRENT_PATH = os.path.abspath(
+    os.path.dirname(os.path.abspath(__file__)) + os.path.sep + "."
+)
 
 app = Flask(__name__)
 # tagger = Tagger()
@@ -34,7 +40,7 @@ def cls_json():
 @app.route("/")
 def hello_world():
     json_example_str = ""
-    with open("examples/json_example") as f:
+    with open(os.path.join(CURRENT_PATH, "./examples/json_example")) as f:
         json_example_str = "<br>".join(f.readlines())
     return (
         "Demo 1 (GET+txt), click here : <a href=\"./cls_text?txt=Today%20I%20woke%20up%20with%20migraine%20and%20I%20took%20an%20aspirine.\">./cls_text?txt='Today I woke up with migraine and I took an aspirine.'</a><br>"
