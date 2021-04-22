@@ -149,7 +149,7 @@ class DocCls:
             text = [text]
         df = pd.DataFrame({"docs": text})
         predictions, relevancies = get_predict(
-            df, self.model, self.tokenizer, column="docs",batch_size
+            df, self.model, self.tokenizer, column="docs", batch_size=batch_size
         )
         return predictions, relevancies
 
