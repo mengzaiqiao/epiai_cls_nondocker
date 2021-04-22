@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import os
+import time
 
 from flask import Flask, jsonify, request
 
@@ -26,8 +27,16 @@ def cls_json():
     print(request.is_json)
     content = request.get_json()
     text_list = content["docs"]
+    now = time.time()
     labels, scores = classifier.predict_text(text_list)
-    return jsonify(text=text_list, label=labels, scores=scores)
+    runtime = time.time() - now
+    return jsonify(
+        text=text_list,
+        label=labels,
+        scores=scores,
+        runtime=f"{runtime} s",
+        docs_num=len(text_list),
+    )
 
 
 # @app.route("/link_entity")
