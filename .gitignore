@@ -1,4 +1,5 @@
 src/static/models/*
+!src/static/models/tokenizer
 src/static/snomed/*
 !src/static/snomed/README.md
 

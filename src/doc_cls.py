@@ -9,7 +9,7 @@ from transformers import AutoTokenizer
 DEFAULT_INPUT_CSV = "./examples/default_example.csv"
 DEFAULT_OUTPUT_CSV = "./examples/default_result.csv"
 DEFAULT_MODEL_PATH = "./models/model_20210315_150752/model.bin"
-DEFAULT_TOKENIZER_PATH = "./models/tokenizer"
+DEFAULT_TOKENIZER_PATH = "./models/tokenizer/"
 DEFAULT_DOC_COL = "promed_news_text"
 
 import os
