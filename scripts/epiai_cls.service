@@ -1,11 +1,12 @@
 [Unit]
 Description=EPIAI Classifer
-[Install]
-WantedBy=multi-user.target
+After=network.target
+
 [Service]
 User=epiai
-PermissionsStartOnly=true
+WorkingDirectory=/home/epiai/epiai_cls_nondocker/src/
 ExecStart=/usr/bin/python3 /home/epiai/epiai_cls_nondocker/src/app.py
-TimeoutSec=600
-Restart=on-failure
-RuntimeDirectoryMode=755sudo 
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
