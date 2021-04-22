@@ -3,6 +3,7 @@ Description=EPIAI Classifer
 After=network.target
 
 [Service]
+Type=simple
 User=epiai
 WorkingDirectory=/home/epiai/epiai_cls_nondocker/src/
 ExecStart=/usr/bin/python3 /home/epiai/epiai_cls_nondocker/src/app.py
