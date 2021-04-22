@@ -31,11 +31,7 @@ def cls_json():
     labels, scores = classifier.predict_text(text_list)
     runtime = time.time() - now
     return jsonify(
-        text=text_list,
-        label=labels,
-        scores=scores,
-        runtime=f"{runtime} s",
-        docs_num=len(text_list),
+        label=labels, scores=scores, runtime=f"{runtime} s", docs_num=len(text_list),
     )
 
 
